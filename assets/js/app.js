@@ -3,7 +3,7 @@ var chartApp = angular.module('chartApp',["ng-fusioncharts"]);
 
 // CONTROLLER
 
-chartApp.controller('chartController', function($scope) {
+chartApp.controller('chartController', function($scope, $http) {
 
 // Data from API
 $scope.samsung = {
@@ -224,7 +224,7 @@ $scope.dataSource =
           "bgColor": "#B0E0E6",
           "bgAlpha": "10",
           "crossLineAlpha": "50",
-          "xAxisName": "Timeline",
+          "xAxisName": "Timeline (in Quarters)",
           "yAxisName": "Users (in %)",
           "tooltipGrayOutColor": "#80bfff",
           "theme": "zune"
@@ -274,6 +274,14 @@ $scope.dataSource =
         }],
         "dataset": ["", "", "", ""]
 }
+
+$http({
+        method : "GET",
+        url : "http://localhost/test_user/actions/info"
+      }).then(function mySuccess(response) {
+        $scope.New_data = response.data;
+        console.log($scope.New_data);
+        });
 
 $scope.samsungFunction = function(samsungCheck)
 {
