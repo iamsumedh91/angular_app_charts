@@ -41,6 +41,25 @@
   <body>
     <div ng-controller="chartController">
       <fusioncharts width="100%" height="500" type="msline" datasource="{{dataSource}}"></fusioncharts>
+      <br/>
+
+      &nbsp; &nbsp;
+      <label>Samsung: </label>
+      <input type="checkbox" ng-model="samsungCheck" ng-change = "samsungFunction(samsungCheck)" />
+      &nbsp; &nbsp;
+      <label>Nokia: </label>
+      <input type="checkbox" ng-model="nokiaCheck" ng-change = "nokiaFunction(nokiaCheck)" />
+      &nbsp; &nbsp;
+      <label>Apple: </label>
+      <input type="checkbox" ng-model="appleCheck" ng-change = "appleFunction(appleCheck)" />
+      &nbsp; &nbsp;
+      <label>New: </label>
+      <input type="checkbox" ng-model="newCheck" ng-change = "newFunction(newCheck)" />
+      </div>
+    <div>
+      
+      
+      <!--<h5>appleValue: {{apple.value}}</h5>-->
     </div>
   </body>
 
