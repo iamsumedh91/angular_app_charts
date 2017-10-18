@@ -280,15 +280,15 @@ $scope.dataSource =
         "dataset": ["", "", "", ""]
 }
 
-$scope.new_data_call = function (new_dataCheck){
+$scope.new_data_call = function (){
 		$http({
         method : "POST",
         url : "http://localhost/charts/test_user/action/info"
       }).then(function mySuccess(response) {
         $scope.new_data = response.data;
-        $scope.new_dataFunction(new_dataCheck);
     });
 }
+$scope.new_data_call();
 
 $scope.new_dataFunction = function(new_dataCheck)
 {
@@ -298,10 +298,10 @@ $scope.new_dataFunction = function(new_dataCheck)
 	}
 	else
 	{
-		var index = $scope.dataSource.dataset.indexOf($scope.new_data);
+        var index = $scope.dataSource.dataset.indexOf($scope.new_data);
 		if (index > -1) {
-    		$scope.dataSource.dataset.splice(index, 1);
-		}
+            $scope.dataSource.dataset.splice(index, 1);
+        }
 	}
 }
 
@@ -309,11 +309,14 @@ $scope.samsungFunction = function(samsungCheck)
 {
 	if (samsungCheck) 
 	{
-		$scope.dataSource.dataset[0] = $scope.samsung;
+		$scope.dataSource.dataset.push($scope.samsung);
 	}
 	else
 	{
-		$scope.dataSource.dataset[0] = "";
+		var index = $scope.dataSource.dataset.indexOf($scope.samsung);
+		if (index > -1) {
+            $scope.dataSource.dataset.splice(index, 1);
+        }
 	}
 }
 
@@ -321,11 +324,14 @@ $scope.nokiaFunction = function(nokiaCheck)
 {
 	if (nokiaCheck) 
 	{
-		$scope.dataSource.dataset[1] = $scope.nokia;
+		$scope.dataSource.dataset.push($scope.nokia);
 	}
 	else
 	{
-		$scope.dataSource.dataset[1] = "";
+		var index = $scope.dataSource.dataset.indexOf($scope.nokia);
+		if (index > -1) {
+            $scope.dataSource.dataset.splice(index, 1);
+        }
 	}
 }
 
@@ -333,11 +339,14 @@ $scope.appleFunction = function(appleCheck)
 {
 	if (appleCheck) 
 	{
-		$scope.dataSource.dataset[2] = $scope.apple;
+		$scope.dataSource.dataset.push($scope.apple);
 	}
 	else
 	{
-		$scope.dataSource.dataset[2] = "";
+		var index = $scope.dataSource.dataset.indexOf($scope.apple);
+		if (index > -1) {
+            $scope.dataSource.dataset.splice(index, 1);
+        }
 	}
 }
 
@@ -345,11 +354,14 @@ $scope.newFunction = function(newCheck)
 {
 	if (newCheck) 
 	{
-		$scope.dataSource.dataset[3] = $scope.new;
+		$scope.dataSource.dataset.push($scope.new);
 	}
 	else
 	{
-		$scope.dataSource.dataset[3] = "";
+		var index = $scope.dataSource.dataset.indexOf($scope.new);
+		if (index > -1) {
+            $scope.dataSource.dataset.splice(index, 1);
+        }
 	}
 }
 });

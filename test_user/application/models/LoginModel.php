@@ -16,9 +16,9 @@
    
     function fetch_values()
     {
-        $query = $this->db->get('values');
+        $query = $this->db->get('data_values');
         $values = $query->result_array();
-
+        
         $data = array();
         foreach ($values as $key => $value) 
         {
