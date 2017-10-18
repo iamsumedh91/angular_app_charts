@@ -1,9 +1,11 @@
 // MODULE
-var chartApp = angular.module('chartApp',["ng-fusioncharts"]);
+var chartApp = angular.module('chartApp',["ng-fusioncharts", "ngCookies"]);
+
+
 
 // CONTROLLER
 
-chartApp.controller('chartController', function($scope, $http) {
+chartApp.controller('chartController', function($scope, $http, $rootScope) {
 
 // Data from API
 $scope.samsung = {
@@ -190,12 +192,12 @@ $scope.samsungCheck = false;
 $scope.nokiaCheck = false;
 $scope.appleCheck = false;
 $scope.newCheck = false;
+$scope.new_dataCheck = false;
 
 
-//chart definition
+//Chart Definition
 
 $scope.dataSource = 
-
 {
         "chart": {
           "caption": "WorlWide Users of the Service",
@@ -224,6 +226,8 @@ $scope.dataSource =
           "bgColor": "#B0E0E6",
           "bgAlpha": "10",
           "crossLineAlpha": "50",
+          "divLineDashed": "1",
+          "divLineAlpha": "50",
           "xAxisName": "Timeline (in Quarters)",
           "yAxisName": "Users (in %)",
           "tooltipGrayOutColor": "#80bfff",
@@ -272,16 +276,31 @@ $scope.dataSource =
             "label": "Q4'16"
           }]
         }],
-        "dataset": ["", "", "", ""]
+        "dataset": ["", "", "", "", ""]
 }
 
-$http({
-        method : "GET",
-        url : "http://localhost/test_user/actions/info"
+$scope.new_data_call = function (new_dataCheck){
+		$http({
+        method : "POST",
+        url : "http://localhost/test_user/rest/info"
       }).then(function mySuccess(response) {
-        $scope.New_data = response.data;
-        console.log($scope.New_data);
-        });
+        $scope.new_data = response.data;
+        console.log($scope.new_data);
+        $scope.new_dataFunction(new_dataCheck);
+    });
+}
+
+$scope.new_dataFunction = function(new_dataCheck)
+{
+	if (new_dataCheck) 
+	{
+		$scope.dataSource.dataset[4] = $scope.new_data;
+	}
+	else
+	{
+		$scope.dataSource.dataset[4] = "";
+	}
+}
 
 $scope.samsungFunction = function(samsungCheck)
 {
