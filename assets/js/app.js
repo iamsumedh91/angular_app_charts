@@ -195,6 +195,7 @@ $scope.newCheck = false;
 $scope.new_dataCheck = false;
 
 
+
 //Chart Definition
 
 $scope.dataSource = 
@@ -276,16 +277,15 @@ $scope.dataSource =
             "label": "Q4'16"
           }]
         }],
-        "dataset": ["", "", "", "", ""]
+        "dataset": ["", "", "", ""]
 }
 
 $scope.new_data_call = function (new_dataCheck){
 		$http({
         method : "POST",
-        url : "http://localhost/test_user/rest/info"
+        url : "http://localhost/charts/test_user/action/info"
       }).then(function mySuccess(response) {
         $scope.new_data = response.data;
-        console.log($scope.new_data);
         $scope.new_dataFunction(new_dataCheck);
     });
 }
@@ -294,11 +294,14 @@ $scope.new_dataFunction = function(new_dataCheck)
 {
 	if (new_dataCheck) 
 	{
-		$scope.dataSource.dataset[4] = $scope.new_data;
+		$scope.dataSource.dataset.push($scope.new_data);
 	}
 	else
 	{
-		$scope.dataSource.dataset[4] = "";
+		var index = $scope.dataSource.dataset.indexOf($scope.new_data);
+		if (index > -1) {
+    		$scope.dataSource.dataset.splice(index, 1);
+		}
 	}
 }
 
