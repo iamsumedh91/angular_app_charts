@@ -299,7 +299,7 @@ $scope.new_dataFunction = function(new_dataCheck)
 	else
 	{
         var index = $scope.dataSource.dataset.indexOf($scope.new_data);
-		if (index > -1) {
+		    if (index > -1) {
             $scope.dataSource.dataset.splice(index, 1);
         }
 	}
