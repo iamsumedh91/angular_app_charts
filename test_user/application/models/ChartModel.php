@@ -5,15 +5,13 @@
     /**
     * Description of LoginModel
     */
-    class LoginModel extends CI_Model
+    class ChartModel extends CI_Model
     {
         function __construct()
         {
             parent::__construct();
         }
-   
-    private $user = 'user';
-   
+    
     function fetch_values()
     {
         $query = $this->db->get('data_values');

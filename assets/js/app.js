@@ -4,10 +4,10 @@ var chartApp = angular.module('chartApp',["ng-fusioncharts", "ngCookies"]);
 
 
 // CONTROLLER
-
 chartApp.controller('chartController', function($scope, $http, $rootScope) {
 
-// Data from API
+// Initializing chart values
+
 $scope.samsung = {
           "seriesname": "Samsung",
           "data": [{
@@ -194,8 +194,6 @@ $scope.appleCheck = false;
 $scope.newCheck = false;
 $scope.new_dataCheck = false;
 
-
-
 //Chart Definition
 
 $scope.dataSource = 
@@ -280,6 +278,10 @@ $scope.dataSource =
         "dataset": ["", "", "", ""]
 }
 
+
+/*
+* Function to get New_data Values
+*/
 $scope.new_data_call = function (){
 		$http({
         method : "POST",
@@ -288,8 +290,15 @@ $scope.new_data_call = function (){
         $scope.new_data = response.data;
     });
 }
+
+/*
+* Call to get API data
+*/ 
 $scope.new_data_call();
 
+/*
+* Function to insert New_data Chart
+*/
 $scope.new_dataFunction = function(new_dataCheck)
 {
 	if (new_dataCheck) 
@@ -305,6 +314,9 @@ $scope.new_dataFunction = function(new_dataCheck)
 	}
 }
 
+/*
+* Function to insert Samsung Chart
+*/
 $scope.samsungFunction = function(samsungCheck)
 {
 	if (samsungCheck) 
@@ -320,6 +332,9 @@ $scope.samsungFunction = function(samsungCheck)
 	}
 }
 
+/*
+* Function to insert Nokia Chart
+*/
 $scope.nokiaFunction = function(nokiaCheck)
 {
 	if (nokiaCheck) 
@@ -335,6 +350,9 @@ $scope.nokiaFunction = function(nokiaCheck)
 	}
 }
 
+/*
+* Function to insert Apple Chart
+*/
 $scope.appleFunction = function(appleCheck)
 {
 	if (appleCheck) 
@@ -350,6 +368,9 @@ $scope.appleFunction = function(appleCheck)
 	}
 }
 
+/*
+* Function to insert New Chart
+*/
 $scope.newFunction = function(newCheck)
 {
 	if (newCheck) 

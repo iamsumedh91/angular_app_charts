@@ -7,8 +7,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */ 
 require(APPPATH . '/libraries/REST_Controller.php');
  
+
 /**
- * Description of RestController
+ * Description of Action Controller
  */
 class Action extends REST_Controller {
 
@@ -17,12 +18,15 @@ class Action extends REST_Controller {
     */
     function __construct() {
         parent::__construct();
-        $this->load->model('LoginModel', 'lm');
+        $this->load->model('ChartModel', 'cm');
     }
-   
+    
+    /*
+    * Function to get database values
+    */
     function info_post()
     {
-        $result = $this->lm->fetch_values();
+        $result = $this->cm->fetch_values();
 
         $data = [ "seriesname" => "New_data", "data" => $result];
 
