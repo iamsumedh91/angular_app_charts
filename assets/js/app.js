@@ -5,6 +5,7 @@ var chartApp = angular.module('chartApp',["ng-fusioncharts", "ngCookies"]);
 chartApp.controller('chartController', function($scope, $http, $rootScope) {
 
 // Initializing chart values
+
 $scope.samsung = {
           "seriesname": "Samsung",
           "data": [{
@@ -186,7 +187,6 @@ $scope.new = {
         };
 
 //Chart Definition
-
 $scope.dataSource = 
 {
         "chart": {
