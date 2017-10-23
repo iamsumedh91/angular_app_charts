@@ -1,13 +1,10 @@
 // MODULE
 var chartApp = angular.module('chartApp',["ng-fusioncharts", "ngCookies"]);
 
-
-
 // CONTROLLER
 chartApp.controller('chartController', function($scope, $http, $rootScope) {
 
 // Initializing chart values
-
 $scope.samsung = {
           "seriesname": "Samsung",
           "data": [{
@@ -187,12 +184,6 @@ $scope.new = {
             "value": "100"
           }]
         };
-
-$scope.samsungCheck = false;
-$scope.nokiaCheck = false;
-$scope.appleCheck = false;
-$scope.newCheck = false;
-$scope.new_dataCheck = false;
 
 //Chart Definition
 
