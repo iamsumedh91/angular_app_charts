@@ -2,6 +2,7 @@
 var chartApp = angular.module('chartApp',["ng-fusioncharts", "ngCookies"]);
 
 // CONTROLLER
+
 chartApp.controller('chartController', function($scope, $http, $rootScope) {
 
 // Initializing chart values
@@ -268,7 +269,6 @@ $scope.dataSource =
         }],
         "dataset": ["", "", "", ""]
 }
-
 
 /*
 * Function to get New_data Values
